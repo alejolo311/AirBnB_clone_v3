@@ -60,7 +60,7 @@ def post(model, p_model, p_id, data):
             return jsonify({'error': 'Missing {}'.format(key)}), 400
 
     if p_model:
-        aux_key = p_model.lower() + "_id"
+        aux_key = p_model.__name__.lower() + "_id"
         json_data[aux_key] = p_id
 
     obj = (model)(**json_data)
@@ -91,8 +91,8 @@ def put(model, m_id, ignore_keys):
 
 from api.v1.views.index import *
 from api.v1.views.states import *
-"""
 from api.v1.views.cities import *
+"""
 from api.v1.views.amenities import *
 from api.v1.views.users import *
 from api.v1.views.places import *
