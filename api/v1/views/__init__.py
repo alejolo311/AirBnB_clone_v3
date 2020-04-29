@@ -46,7 +46,7 @@ def post(model, p_model, p_id, data):
     """
         POST Request
     """
-    json_data = request.get_json()
+    json_data = request.get_json(silent=True)
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
     
@@ -72,7 +72,7 @@ def put(model, m_id, ignore_keys):
     """
         PUT Request
     """
-    json_data = request.get_json()
+    json_data = request.get_json(silent=True)
 
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
