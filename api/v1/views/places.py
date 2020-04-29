@@ -49,5 +49,5 @@ def put_place(place_id):
     """
         PUT Request for a city
     """
-    return put(City, city_id, ["id", "created_at", "updated_at", "user_id",
+    return put(Place, place_id, ["id", "created_at", "updated_at", "user_id",
             "city_id"])
