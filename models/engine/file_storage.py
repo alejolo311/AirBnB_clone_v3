@@ -80,7 +80,7 @@ class FileStorage:
         id : str
             the correspondat ID to search in the all retrieved objects
         """
-        CLASS = classes[cls]
+        CLASS = classes[cls.__name__]
         if CLASS is None:
             return None
         for value in self.all(CLASS).values():
