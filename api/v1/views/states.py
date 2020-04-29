@@ -11,7 +11,7 @@ from models.state import State
 
 @app_views.route("/states", strict_slashes=False, methods=["GET"])
 @app_views.route("/states/<state_id>", methods=["GET"])
-def get_state_(state_id=None):
+def get_state(state_id=None):
     """
         GET Request for States
     """
@@ -22,7 +22,7 @@ def get_state_(state_id=None):
 
 
 @app_views.route("/states/<state_id>", methods=["DELETE"])
-def delete_state_(state_id):
+def delete_state(state_id):
     """
         DELETE Request for states
     """
@@ -30,7 +30,7 @@ def delete_state_(state_id):
 
 
 @app_views.route("/states", strict_slashes=False, methods=["POST"])
-def post_state_():
+def post_state():
     """
         POST Request for States
     """
@@ -38,7 +38,7 @@ def post_state_():
 
 
 @app_views.route("/states/<state_id>", methods=["PUT"])
-def put_state_(state_id):
+def put_state(state_id):
     """
         PUT Request for States
     """
