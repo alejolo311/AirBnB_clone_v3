@@ -28,9 +28,6 @@ def get_model(model, m_id):
     if obj:
         return jsonify(obj.to_dict()), 200
     abort(404)
-    else:
-        return jsonify([value.to_dict() for value in
-                       storage.all(model).values()]), 200
 
 
 def delete(model, m_id):
