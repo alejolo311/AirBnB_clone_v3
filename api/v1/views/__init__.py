@@ -24,14 +24,10 @@ def get_model(model, m_id):
     """
         GET Request
     """
-    if m_id:
-        obj = storage.get(model, m_id)
-        if obj:
-            return jsonify(obj.to_dict()), 200
-        abort(404)
-    else:
-        return jsonify([value.to_dict() for value in
-                       storage.all(model).values()]), 200
+    obj = storage.get(model, m_id)
+    if obj:
+        return jsonify(obj.to_dict()), 200
+    abort(404)
 
 
 def delete(model, m_id):
@@ -53,7 +49,7 @@ def post(model, p_model, p_id, data):
     json_data = request.get_json(silent=True)
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
-    
+
     if p_model:
         parent = storage.get(p_model, p_id)
         if not parent:
@@ -72,6 +68,7 @@ def post(model, p_model, p_id, data):
 
     return jsonify(obj.to_dict()), 201
 
+
 def put(model, m_id, ignore_keys):
     """
         PUT Request
@@ -80,6 +77,8 @@ def put(model, m_id, ignore_keys):
 
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
+    if "name" not in json_data:
+        return jsonify({'error': 'Missing {}'.format("name")}), 400
 
     obj = storage.get(model, m_id)
     if not obj:
