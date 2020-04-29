@@ -16,9 +16,9 @@ def get_state(state_id=None):
         GET Request for States
     """
     if state_id:
-        return get_model(State, state_id), 200
+        return get_model(State, state_id)
 
-    return jsonify([obj.to_dict() for obj in storage.all(State).values()]), 200
+    return jsonify([obj.to_dict() for obj in storage.all("State").values()])
 
 
 @app_views.route("/states/<state_id>", methods=["DELETE"])

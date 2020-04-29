@@ -63,7 +63,7 @@ def post(model, p_model, p_id, data):
         aux_key = p_model.lower() + "_id"
         json_data[aux_key] = p_id
 
-    obj = classes[model](**json_data)
+    obj = (model)(**json_data)
     obj.save()
 
     return jsonify(obj.to_dict()), 201
@@ -77,8 +77,6 @@ def put(model, m_id, ignore_keys):
 
     if not json_data:
         return jsonify({'error': 'Not a JSON'}), 400
-    if "name" not in json_data:
-        return jsonify({'error': 'Missing {}'.format("name")}), 400
 
     obj = storage.get(model, m_id)
     if not obj:
