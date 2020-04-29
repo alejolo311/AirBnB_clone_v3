@@ -45,7 +45,7 @@ def post_place(city_id):
 
 
 @app_views.route("/places/<place_id>", methods=["PUT"])
-def put_city(place_id):
+def put_place(place_id):
     """
         PUT Request for a city
     """
