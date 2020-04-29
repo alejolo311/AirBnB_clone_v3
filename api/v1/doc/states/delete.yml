@@ -1,0 +1,24 @@
+Delete a state based in his ID
+---
+tags:
+  - name: States
+parameters:
+  - in: path
+    name: state_id
+    required: true
+    schema:
+      type: integer
+      minimum: 1
+    description: The state ID
+responses:
+  200:
+    description: An empty object
+    examples:
+      application/json: {}
+  404:
+    description: not found any state
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}
