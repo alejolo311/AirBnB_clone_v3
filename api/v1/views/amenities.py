@@ -11,7 +11,7 @@ from models.amenity import Amenity
 
 @app_views.route("/amenities", strict_slashes=False, methods=["GET"])
 @app_views.route("/amenities/<amenity_id>", methods=["GET"])
-def get_state(amenity_id=None):
+def get_amenity(amenity_id=None):
     """
         GET Request for an amenitie
     """
@@ -22,7 +22,7 @@ def get_state(amenity_id=None):
 
 
 @app_views.route("/amenities/<amenity_id>", methods=["DELETE"])
-def delete_state(amenity_id):
+def delete_amenity(amenity_id):
     """
         DELETE Request for an amenity
     """
@@ -30,7 +30,7 @@ def delete_state(amenity_id):
 
 
 @app_views.route("/amenities", strict_slashes=False, methods=["POST"])
-def post_state():
+def post_amenity():
     """
         POST Request for an amenity
     """
@@ -38,7 +38,7 @@ def post_state():
 
 
 @app_views.route("/amenities/<amenity_id>", methods=["PUT"])
-def put_state(amenity_id):
+def put_amenity(amenity_id):
     """
         PUT Request for States
     """
