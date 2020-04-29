@@ -8,8 +8,39 @@ from models import storage
 from api.v1.views import app_views
 from os import getenv
 from flask_cors import CORS
+from flasgger import Swagger
+
 
 app = Flask(__name__)
+template = {
+  "swagger": "2.0",
+  "info": {
+    "title": "HBNB API RESTful",
+    "description": "this API is a Holberton School project build by Alejo \
+    López & Hugo Bayona, this API is part of the AirBnB clone project",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http",
+  ],
+  "operationId": "getmyData"
+}
+swagger_config = {
+    "headers": [
+    ],
+    "specs": [
+        {
+            "endpoint": 'hbnb',
+            "route": '/hbnb.json',
+            "rule_filter": lambda rule: True,  # all in
+            "model_filter": lambda tag: True,  # all in
+        }
+    ],
+    "static_url_path": "/flasgger_static",
+    "swagger_ui": True,
+    "specs_route": "/apidocs/"
+}
+swagger = Swagger(app, template=template,  config=swagger_config)
 app.register_blueprint(app_views)
 app.url_map.strict_slashes = False
 cors = CORS(app, resources={"*": {"origins": "0.0.0.0"}})
