@@ -1,0 +1,24 @@
+Delete a city based in his ID
+---
+tags:
+  - name: Cities
+parameters:
+  - in: path
+    name: city_id
+    required: true
+    schema:
+      type: integer
+      minimum: 1
+    description: The city ID
+responses:
+  200:
+    description: An empty object
+    examples:
+      application/json: {}
+  404:
+    description: not found any city
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}

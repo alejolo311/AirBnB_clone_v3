@@ -8,10 +8,12 @@ from flask import Flask, jsonify
 from models import storage
 from models.city import City
 from models.state import State
+from flasgger import swag_from
 
 
 @app_views.route("/states/<state_id>/cities", strict_slashes=False,
                  methods=["GET"])
+@swag_from('../doc/cities/get.yml')
 def get_cities(state_id):
     """
         GET Request all cities in a State
@@ -20,6 +22,7 @@ def get_cities(state_id):
 
 
 @app_views.route("/cities/<city_id>", strict_slashes=False, methods=["GET"])
+@swag_from('../doc/cities/getById.yml')
 def get_city(city_id):
     """
         GET Request for a city
@@ -28,6 +31,7 @@ def get_city(city_id):
 
 
 @app_views.route("/cities/<city_id>", methods=["DELETE"])
+@swag_from('../doc/cities/delete.yml')
 def delete_city(city_id):
     """
         DELETE Request for a city
@@ -37,6 +41,7 @@ def delete_city(city_id):
 
 @app_views.route("/states/<state_id>/cities", strict_slashes=False,
                  methods=["POST"])
+@swag_from('../doc/cities/post.yml')
 def post_city(state_id):
     """
         POST Request for a city
@@ -45,6 +50,7 @@ def post_city(state_id):
 
 
 @app_views.route("/cities/<city_id>", methods=["PUT"])
+@swag_from('../doc/cities/put.yml')
 def put_city(city_id):
     """
         PUT Request for a city

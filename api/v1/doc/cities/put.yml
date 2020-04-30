@@ -1,0 +1,26 @@
+Update one state based in his ID
+---
+tags:
+  - name: Cities
+parameters:
+  - in: path
+    name: city_id
+    required: true
+    schema:
+      type: integer
+      minimum: 1
+    description: The city ID
+responses:
+  200:
+    description: return the updated state
+    schema:
+      $ref: '#/definitions/City'
+    examples:
+      application/json: { "state_id": "02047f77-f223-47e5-93cc-6eff833ea7e9","id": "6a64f7c4-2015-48e9-8e15-0a041e2c1784", "name": "Cali", "created_at": "2020-04-27T15:27:20.000000", "updated_at": "2020-04-27T15:27:20.000000" }  
+  404:
+    description: not found any state
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}

@@ -1,0 +1,26 @@
+Return one state based in his ID
+---
+tags:
+  - name: Cities
+parameters:
+  - in: path
+    name: state_id
+    required: true
+    schema:
+      type: integer
+      minimum: 1
+    description: The state ID
+responses:
+  200:
+    description: return the city
+    schema:
+      $ref: '#/definitions/city'
+    examples:
+      application/json: { "id": "02047f77-f223-47e5-93cc-6eff833ea7e9", "name": "California", "created_at": "2020-04-27T15:27:20.000000", "updated_at": "2020-04-27T15:27:20.000000" }
+  404:
+    description: not found any city
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}
