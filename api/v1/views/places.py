@@ -4,7 +4,7 @@ view for Place
 """
 
 from api.v1.views import *
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from models import storage
 from models.city import City
 from models.place import Place
@@ -16,7 +16,18 @@ def get_places(city_id):
     """
         GET Request all places in a city
     """
-    return parent_model(City, city_id, "places")
+    parent = storage.get(City, city_id)
+
+    if parent is None:
+        abort(404)
+
+    obj = storage.all(Place)
+    pla = []
+    for item in obj.values():
+        new_dict = item.to_dict()
+        if new_dict.get('city_id') == city_id:
+            pla.append(new_dict)
+    return jsonify(pla)
 
 
 @app_views.route("/places/<place_id>", strict_slashes=False, methods=["GET"])
