@@ -1,0 +1,39 @@
+Create a new state
+---
+tags:
+  - name: States
+parameters:
+  - in: body
+    name: state
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+      minimum: 1
+    description: The state name
+responses:
+  201:
+    description: Return the new state
+    schema:
+      $ref: '#/definitions/State'
+    examples:
+      application/json: { "id": "02047f77-f223-47e5-93cc-6eff833ea7e9", "name": "California", "created_at": "2020-04-27T15:27:20.000000", "updated_at": "2020-04-27T15:27:20.000000" }
+  404:
+    description: not found any state
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}
+  400:
+    description: not a json file or the required field is not present
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "Not a JSON"}
+      application/json: { "error": "Missing name"}

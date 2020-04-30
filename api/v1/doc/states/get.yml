@@ -1,0 +1,30 @@
+Return all the states in case that doesn't states in database return not found.
+---
+tags:
+  - name: States
+definitions:
+  State:
+    type: object
+    properties:
+      name:
+        type: string
+      id:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+responses:
+  200:
+    description: A list of states
+    schema:
+      $ref: '#/definitions/State'
+    examples:
+      application/json: { "id": "02047f77-f223-47e5-93cc-6eff833ea7e9", "name": "California", "created_at": "2020-04-27T15:27:20.000000", "updated_at": "2020-04-27T15:27:20.000000" }
+  404:
+    description: not found any state
+    schema:
+      error:
+        type: string
+    examples:
+      application/json: { "error": "not found"}
